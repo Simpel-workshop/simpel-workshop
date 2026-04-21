@@ -1,10 +1,16 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { useCartStore } from "@/store/cartStore";
 
 export default function Header() {
   const count = useCartStore((state) => state.getCount());
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <header className="mb-6 rounded-2xl border-4 border-sky-300 bg-white px-6 py-4">
@@ -16,7 +22,9 @@ export default function Header() {
           Products
         </Link>
 
-        <div className="ml-auto rounded-xl bg-sky-100 px-4 py-2 text-base">Kurv: {count}</div>
+        <div className="ml-auto rounded-xl bg-sky-100 px-4 py-2 text-base">
+          Kurv: {mounted ? count : 0}
+        </div>
       </nav>
     </header>
   );

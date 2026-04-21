@@ -22,23 +22,24 @@ export default function PaymentPage() {
   };
 
   return (
-    <main className="mx-auto max-w-5xl p-6">
-      <div className="rounded-3xl border-4 border-black bg-[#f5f5f5] p-4 min-h-screen">
+    <main className="mx-auto max-w-7xl p-6">
+      <div className="min-h-screen">
         <Header />
 
-        <section className="mx-auto max-w-3xl py-10">
-          <div className="mb-16 space-y-8">
+        <section className="mx-auto max-w-3xl py-12">
+          <div className="mb-14 divide-y divide-neutral-200 border-t border-neutral-200 bg-white">
             {!mounted ? (
-              <p className="text-center text-xl text-gray-500">Indlæser kurv...</p>
+              <p className="py-10 text-center text-sm uppercase tracking-[0.12em] text-neutral-500">
+                Indlæser kurv...
+              </p>
             ) : items.length === 0 ? (
-              <p className="text-center text-xl text-gray-500">Kurven er tom.</p>
+              <p className="py-10 text-center text-sm uppercase tracking-[0.12em] text-neutral-500">
+                Kurven er tom.
+              </p>
             ) : (
               items.map((item) => (
-                <div
-                  key={item.id}
-                  className="flex items-center gap-6 rounded-2xl border-2 border-gray-200 bg-white p-4"
-                >
-                  <div className="h-20 w-20 overflow-hidden rounded-xl border-4 border-orange-400 bg-white">
+                <div key={item.id} className="flex items-center gap-5 py-6">
+                  <div className="h-20 w-20 overflow-hidden bg-white">
                     <img
                       src={item.thumbnail}
                       alt={item.title}
@@ -47,15 +48,17 @@ export default function PaymentPage() {
                   </div>
 
                   <div className="flex-1">
-                    <p className="text-2xl font-bold text-orange-400">{item.title}</p>
-                    <p className="text-gray-500">
-                      {item.price} kr. x {item.quantity}
+                    <p className="text-sm font-medium uppercase tracking-[0.08em] text-neutral-900">
+                      {item.title}
+                    </p>
+                    <p className="mt-1 text-sm text-neutral-500">
+                      {item.price} kr. × {item.quantity}
                     </p>
                   </div>
 
                   <button
                     onClick={() => removeFromCart(item.id)}
-                    className="rounded-xl border-2 border-red-300 px-3 py-2 font-semibold text-red-500 hover:bg-red-50"
+                    className="text-xs font-medium uppercase tracking-[0.12em] text-neutral-500 transition hover:text-neutral-900"
                   >
                     Fjern
                   </button>
@@ -64,15 +67,15 @@ export default function PaymentPage() {
             )}
           </div>
 
-          <div className="text-center">
-            <p className="mb-6 text-3xl font-bold text-gray-700">
+          <div className="border-t border-neutral-200 pt-8 text-center">
+            <p className="mb-6 text-2xl font-medium text-neutral-900">
               I alt at betale: {mounted ? total.toFixed(2) : "0.00"} kr.
             </p>
 
             <button
               onClick={handleFakePayment}
               disabled={!mounted || items.length === 0}
-              className="rounded-2xl border-4 border-orange-400 px-8 py-3 text-2xl font-bold transition hover:bg-orange-50 disabled:opacity-50"
+              className="border border-neutral-900 px-8 py-3 text-xs font-medium uppercase tracking-[0.14em] text-neutral-900 transition hover:bg-neutral-900 hover:text-white disabled:opacity-40"
             >
               Betal nu
             </button>

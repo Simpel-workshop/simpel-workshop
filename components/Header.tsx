@@ -13,16 +13,16 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="mb-6 rounded-2xl border-4 border-sky-300 bg-white px-6 py-4">
-      <nav className="flex items-center gap-8 text-xl font-bold">
+    <header className="mb-10 flex items-center border-b border-neutral-200 bg-transparent px-0 py-5">
+      <nav className="flex w-full items-center gap-8 text-sm font-medium uppercase tracking-[0.12em] text-neutral-800">
         <Link href="/" className="transition hover:text-sky-500">
           Home
         </Link>
-        <Link href="/products" className="transition hover:text-sky-500">
+        <Link href="/products" className="transition hover:text-neutral-500">
           Products
         </Link>
 
-        <div className="ml-auto rounded-xl bg-sky-100 px-4 py-2 text-base">
+        <div className="ml-auto text-sm font-medium text-neutral-700">
           Kurv: {mounted ? count : 0}
         </div>
       </nav>

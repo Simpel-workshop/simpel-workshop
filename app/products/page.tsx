@@ -45,15 +45,15 @@ export default function ProductsPage() {
   }, [products, selectedCategory, search]);
 
   return (
-    <main className="mx-auto max-w-7xl p-6">
-      <div className="min-h-screen rounded-3xl border-4 border-black bg-[#f5f5f5] p-4">
+    <main className="min-h-screen bg-neutral-50">
+      <div className="mx-auto max-w-7xl px-6 py-6">
         <Header />
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_320px]">
-          <section className="rounded-3xl border-4 border-orange-300 bg-white p-6">
+          <section className="bg-white p-8 md:p-10">
             <Filters categories={categories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} search={search} setSearch={setSearch} />
 
-            <p className="mb-6 font-bold text-green-500">{filteredProducts.length} items</p>
+            <p className="mb-6 ">{filteredProducts.length} items</p>
 
             {loading ? (
               <p>Henter produkter...</p>

@@ -38,7 +38,7 @@ export default function PaymentPage() {
               </p>
             ) : (
               items.map((item) => (
-                <div key={item.id} className="flex items-center gap-5 py-6">
+                <div key={item.id} className="flex items-center gap-5 py-6 pr-3">
                   <div className="h-20 w-20 overflow-hidden bg-white">
                     <img
                       src={item.thumbnail}
